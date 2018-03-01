@@ -1,0 +1,46 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../morph-element/morph-element.html">
+
+<dom-module id="morph-list-view-title">
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 14px;
+      }
+
+      :host([platform="ios"]) {
+        text-transform: uppercase;
+        color: #6d6d72;
+        margin: 35px 15px 10px;
+        line-height: 17px;
+      }
+    </style>
+
+    <slot></slot>
+
+  </template>
+
+  <script>
+    /**
+     * `morph-list-view-title`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MorphListViewTitle extends MorphElement(Polymer.Element) {
+      static get is() { return 'morph-list-view-title'; }
+      static get properties() {
+        return {};
+      }
+    }
+
+    window.customElements.define(MorphListViewTitle.is, MorphListViewTitle);
+  </script>
+</dom-module>
