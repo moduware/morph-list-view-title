@@ -86,35 +86,35 @@
           });
 
           it('Should have font color rgba(0, 0, 0, 0.54)', () => {
-            const expectedFontColor = slotElementStyles.getPropertyValue('color');
+            const androidTitleFontColor = slotElementStyles.getPropertyValue('color');
 
             // convert rgba alpha(last value) into 2 decimal only to work with safari(safari has 6 decimal places so test fails wrongly)
-            const alpha = expectedFontColor.replace(/^.*,(.+)\)/, '$1');
+            const alpha = androidTitleFontColor.replace(/^.*,(.+)\)/, '$1');
             const alphaTwoDecimal = Number(alpha).toFixed(2);
-            const expectedFontColorTwoDecimalAlpha = expectedFontColor.replace(/[\d\.]+\)$/g, alphaTwoDecimal + ')');
+            const androidTitleFontColorTwoDecimalAlpha = androidTitleFontColor.replace(/[\d\.]+\)$/g, alphaTwoDecimal + ')');
             
-            expect(expectedFontColorTwoDecimalAlpha).to.equal('rgba(0, 0, 0, 0.54)');
+            expect(androidTitleFontColorTwoDecimalAlpha).to.equal('rgba(0, 0, 0, 0.54)');
           });
 
           it('Should have margin margin-top of 32px and margin-bottom of 16px;', () => {
-            const expectedMarginTop = slotElementStyles.getPropertyValue('margin-top');
-            const expectedMarginBottom = slotElementStyles.getPropertyValue('margin-bottom');
+            const androidTitleMarginTop = slotElementStyles.getPropertyValue('margin-top');
+            const androidTitleMarginBottom = slotElementStyles.getPropertyValue('margin-bottom');
             
             // again, two expectation for very related things to check, otherwise seperate it blocks is better
-            expect(expectedMarginTop).to.equal('32px');
-            expect(expectedMarginBottom).to.equal('16px');
+            expect(androidTitleMarginTop).to.equal('32px');
+            expect(androidTitleMarginBottom).to.equal('16px');
           });
 
           it('Should have line-height of 16px', () => {
-            const expectedLineHeight = slotElementStyles.getPropertyValue('line-height');
+            const androidTitleLineHeight = slotElementStyles.getPropertyValue('line-height');
 
-            expect(expectedLineHeight).to.equal('16px');
+            expect(androidTitleLineHeight).to.equal('16px');
           });
 
           it('Should have font-weight of 500', () => {
-            const expectedFontWeight = slotElementStyles.getPropertyValue('font-weight');
+            const androidTitleFontWeight = slotElementStyles.getPropertyValue('font-weight');
 
-            expect(expectedFontWeight).to.equal('500');
+            expect(androidTitleFontWeight).to.equal('500');
           });
 
         });
