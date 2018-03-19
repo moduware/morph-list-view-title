@@ -48,16 +48,22 @@
             expect(mainSlotTextContent).to.equal('My Title');
           });
 
-          it('Should have text-transform uppercase', () => {        
-            expect(slotElementStyles.getPropertyValue('text-transform')).to.equal('uppercase');
+          it('Should have correct main-text font color for IOS platform', () => {
+            const iosTitleFontColor = slotElementStyles.getPropertyValue('color');
+
+            expect(iosTitleFontColor).to.equal('rgb(109, 109, 114)');
           });
 
-          it('Should have correct main-text font color for IOS platform', () => {
-            expect(slotElementStyles.getPropertyValue('color')).to.equal('rgb(109, 109, 114)');
+          it('Should have text-transform uppercase', () => {   
+            const iosTitleTextTransform = slotElementStyles.getPropertyValue('text-transform');
+
+            expect(iosTitleTextTransform).to.equal('uppercase');
           });
 
           it('Should have correct main-text line-height for IOS platform', () => {
-            expect(slotElementStyles.getPropertyValue('line-height')).to.equal('17px');
+            const iosTitleLineHeight = slotElementStyles.getPropertyValue('line-height');
+
+            expect(iosTitleLineHeight).to.equal('17px');
           });
 
           it('Should have margin margin: 32px 16px 16px;', () => {
@@ -86,7 +92,6 @@
             const alpha = expectedFontColor.replace(/^.*,(.+)\)/, '$1');
             const alphaTwoDecimal = Number(alpha).toFixed(2);
             const expectedFontColorTwoDecimalAlpha = expectedFontColor.replace(/[\d\.]+\)$/g, alphaTwoDecimal + ')');
-            console.log('expectedFontColorTwoDecimalAlpha', expectedFontColorTwoDecimalAlpha);
             
             expect(expectedFontColorTwoDecimalAlpha).to.equal('rgba(0, 0, 0, 0.54)');
           });
