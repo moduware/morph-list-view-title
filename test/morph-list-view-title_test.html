@@ -9,40 +9,109 @@
     <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
+    <link rel="import" href="/bower_components/polymer/lib/utils/flattened-nodes-observer.html">
     <link rel="import" href="../morph-list-view-title.html">
   </head>
   <body>
 
-    <test-fixture id="BasicTestFixture">
+    <test-fixture id="IosTestFixture">
       <template>
-        <morph-list-view-title></morph-list-view-title>
+        <morph-list-view-title platform="ios">My Title</morph-list-view-title>
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
+    <test-fixture id="AndroidTestFixture">
       <template>
-        <morph-list-view-title prop1="new-prop1"></morph-list-view-title>
+        <morph-list-view-title platform="android">My Title</morph-list-view-title>
       </template>
     </test-fixture>
 
     <script>
-      suite('morph-list-view-title', () => {
+      describe('morph-list-view-title', () => {
 
-        test('instantiating the element with default properties works', () => {
-          const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'morph-list-view-title');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello morph-list-view-title!');
+        context('on IOS platform', () => {
+
+          let element, elementShadowRoot, slotElementStyles;
+
+          beforeEach(function() {
+            element = fixture('IosTestFixture');
+            elementShadowRoot = element.shadowRoot;
+            slotElementStyles = window.getComputedStyle(element);
+          });
+
+          
+
+          it('Should have the right text', () => {
+            const slots = elementShadowRoot.querySelectorAll("slot");
+            const mainSlotTextContent = slots[0].assignedNodes()[0].textContent;
+            
+            expect(mainSlotTextContent).to.equal('My Title');
+          });
+
+          it('Should have text-transform uppercase', () => {        
+            expect(slotElementStyles.getPropertyValue('text-transform')).to.equal('uppercase');
+          });
+
+          it('Should have correct main-text font color for IOS platform', () => {
+            expect(slotElementStyles.getPropertyValue('color')).to.equal('rgb(109, 109, 114)');
+          });
+
+          it('Should have correct main-text line-height for IOS platform', () => {
+            expect(slotElementStyles.getPropertyValue('line-height')).to.equal('17px');
+          });
+
+          it('Should have margin margin: 32px 16px 16px;', () => {
+            const expectedMarginTop = slotElementStyles.getPropertyValue('margin-top');
+            const expectedMarginBottom = slotElementStyles.getPropertyValue('margin-bottom');
+
+            expect(expectedMarginTop).to.equal('35px');
+            expect(expectedMarginBottom).to.equal('10px');
+          });
+
         });
 
-        test('setting a property on the element works', () => {
-          // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+
+        context('on Android platform', () => {
+          let element, slotElementStyles;
+
+          beforeEach(() => {
+            element = fixture('AndroidTestFixture');
+            slotElementStyles = window.getComputedStyle(element);
+          });
+
+          it('Should have font color rgba(0, 0, 0, 0.54)', () => {
+            const expectedFontColor = slotElementStyles.getPropertyValue('color');
+
+            // convert rgba alpha(last value) into 2 decimal only to work with safari(safari has 6 decimal places so test fails wrongly)
+            const alpha = expectedFontColor.replace(/^.*,(.+)\)/, '$1');
+            const alphaTwoDecimal = Number(alpha).toFixed(2);
+            const expectedFontColorTwoDecimalAlpha = expectedFontColor.replace(/[\d\.]+\)$/g, alphaTwoDecimal + ')');
+            console.log('expectedFontColorTwoDecimalAlpha', expectedFontColorTwoDecimalAlpha);
+            
+            expect(expectedFontColorTwoDecimalAlpha).to.equal('rgba(0, 0, 0, 0.54)');
+          });
+
+          it('Should have margin margin-top of 32px and margin-bottom of 16px;', () => {
+            const expectedMarginTop = slotElementStyles.getPropertyValue('margin-top');
+            const expectedMarginBottom = slotElementStyles.getPropertyValue('margin-bottom');
+            
+            // again, two expectation for very related things to check, otherwise seperate it blocks is better
+            expect(expectedMarginTop).to.equal('32px');
+            expect(expectedMarginBottom).to.equal('16px');
+          });
+
+          it('Should have line-height of 16px', () => {
+            const expectedLineHeight = slotElementStyles.getPropertyValue('line-height');
+
+            expect(expectedLineHeight).to.equal('16px');
+          });
+
+          it('Should have font-weight of 500', () => {
+            const expectedFontWeight = slotElementStyles.getPropertyValue('font-weight');
+
+            expect(expectedFontWeight).to.equal('500');
+          });
+
         });
 
       });
