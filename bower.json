@@ -3,7 +3,8 @@
   "main": "morph-list-view-title.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "morph-element": "https://github.com/moduware/morph-element.git#master"
+    "morph-element": "https://github.com/moduware/morph-element.git#master",
+    "morph-shared-styles": "https://github.com/moduware/morph-shared-styles.git#^0.0.1"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
