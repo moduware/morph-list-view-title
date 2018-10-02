@@ -2,6 +2,7 @@
   "name": "@polymer/morph-list-view-title",
   "version": "1.0.0",
   "scripts": {
+    "start": "polymer serve --npm --module-resolution=node",
     "test": "polymer test --npm --module-resolution=node"
   },
   "resolutions": {

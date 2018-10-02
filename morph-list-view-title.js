@@ -1,5 +1,5 @@
-import { MorphElement } from '@polymer/morph-element/morph-element.js';
-import '@polymer/morph-shared-styles/morph-shared-styles.js';
+import { MorphElement } from 'morph-element/morph-element.js';
+import 'morph-shared-styles/morph-shared-styles.js';
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 /**
