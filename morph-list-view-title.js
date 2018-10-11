@@ -1,16 +1,17 @@
-import { MorphElement } from 'morph-element/morph-element.js';
-import 'morph-shared-styles/morph-shared-styles.js';
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { MorphElement } from '@moduware/morph-element/morph-element.js';
+import '@moduware/morph-shared-styles/morph-shared-styles.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 /**
  * `morph-list-view-title`
  * 
  *
  * @customElement
  * @polymer
+ * @extends HTMLElement
+ * 
  * @demo demo/index.html
  */
-class MorphListViewTitle extends MorphElement(PolymerElement) {
+export class MorphListViewTitle extends MorphElement(PolymerElement) {
   static get template() {
     return html`
     <style include="morph-shared-styles">

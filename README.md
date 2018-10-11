@@ -17,13 +17,13 @@ For the information about how to clone the desired repository, running the local
 - Here is a quick demo of the `morph-list-view-title` element for **IOS platform**.
 
   <p align="center">
-    <img src="demo-images/ios-title-inside-view-demo.png" alt="IOS morph-list-view-title demo"/>
+    <img src="https://github.com/moduware/morph-list-view-title/blob/master/demo-images/ios-title-inside-view-demo.png?raw=true" alt="IOS morph-list-view-title demo"/>
   </p>
 
 - Here is a quick demo of the `morph-list-view-title` element for **Android platform**.
 
   <p align="center">
-    <img src="demo-images/android-title-inside-view-demo.png" alt="Android morph-list-view-title demo"/>
+    <img src="https://github.com/moduware/morph-list-view-title/blob/master/demo-images/android-title-inside-view-demo.png?raw=true" alt="Android morph-list-view-title demo"/>
   </p>
 
 - Here is the HTML markup for both **IOS** and **Android** platform
