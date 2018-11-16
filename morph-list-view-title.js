@@ -1,18 +1,20 @@
-import { MorphElement } from '@moduware/morph-element/morph-element.js';
+// import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+// import { MorphElement } from '@moduware/morph-element/morph-element.js';
+
+import { LitElement, html } from '@polymer/lit-element';
 import '@moduware/morph-shared-styles/morph-shared-styles.js';
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { getPlatform } from './src/morph-element.js';
 /**
  * `morph-list-view-title`
  * 
  *
  * @customElement
- * @polymer
  * @extends HTMLElement
  * 
  * @demo demo/index.html
  */
-export class MorphListViewTitle extends MorphElement(PolymerElement) {
-  static get template() {
+export class MorphListViewTitle extends LitElement {
+  render() {
     return html`
     <style include="morph-shared-styles">
       :host {
@@ -46,8 +48,22 @@ export class MorphListViewTitle extends MorphElement(PolymerElement) {
 
   static get is() { return 'morph-list-view-title'; }
   static get properties() {
-    return {};
+    return {
+      platform: {
+        type: String,
+        reflect: true
+      }
+    };
   }
+
+  firstUpdated() {
+    super.firstUpdated();
+
+    if (!this.hasAttribute('platform')) {
+      this.platform = getPlatform();
+    }
+  }
+
 }
 
 window.customElements.define(MorphListViewTitle.is, MorphListViewTitle);

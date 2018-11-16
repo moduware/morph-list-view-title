@@ -12,6 +12,11 @@
     <script type="module" src="../morph-list-view-title.js"></script>
   </head>
   <body>
+    <test-fixture id="BasicTestFixture">
+      <template>
+        <morph-list-view-title>My Title</morph-list-view-title>
+      </template>
+    </test-fixture>
 
     <test-fixture id="IosTestFixture">
       <template>
@@ -29,6 +34,20 @@
 
       describe('morph-list-view-title', () => {
 
+        context('Test auto detect platform', () => {
+          let element;
+
+          beforeEach(() => {
+            element = fixture('BasicTestFixture');
+          });
+
+          it('Should auto detect platform and assign value', async () => {
+            await element.updateComplete;
+
+            expect(element.platform).to.be.ok;
+          });
+        });
+
         context('on IOS platform', () => {
 
           let element, elementShadowRoot, slotElementStyles;
@@ -39,32 +58,42 @@
             slotElementStyles = window.getComputedStyle(element);
           });
 
-          it('Should have the right text', () => {
+          it('Should have the right text', async () => {
+            await element.updateComplete;
+
             const slots = elementShadowRoot.querySelectorAll("slot");
             const mainSlotTextContent = slots[0].assignedNodes()[0].textContent;
             
             expect(mainSlotTextContent).to.equal('My Title');
           });
 
-          it('Should have correct main-text font color for IOS platform', () => {
+          it('Should have correct main-text font color for IOS platform', async () => {
+            await element.updateComplete;
+
             const iosTitleFontColor = slotElementStyles.getPropertyValue('color');
 
             expect(iosTitleFontColor).to.equal('rgb(109, 109, 114)');
           });
 
-          it('Should have text-transform uppercase', () => {   
+          it('Should have text-transform uppercase', async () => {   
+            await element.updateComplete;
+
             const iosTitleTextTransform = slotElementStyles.getPropertyValue('text-transform');
 
             expect(iosTitleTextTransform).to.equal('uppercase');
           });
 
-          it('Should have correct main-text line-height for IOS platform', () => {
+          it('Should have correct main-text line-height for IOS platform', async () => {
+            await element.updateComplete;
+
             const iosTitleLineHeight = slotElementStyles.getPropertyValue('line-height');
 
             expect(iosTitleLineHeight).to.equal('17px');
           });
 
-          it('Should have margin margin: 32px 16px 16px;', () => {
+          it('Should have margin margin: 32px 16px 16px;', async () => {
+            await element.updateComplete;
+
             const expectedMarginTop = slotElementStyles.getPropertyValue('margin-top');
             const expectedMarginBottom = slotElementStyles.getPropertyValue('margin-bottom');
 
@@ -83,7 +112,9 @@
             slotElementStyles = window.getComputedStyle(element);
           });
 
-          it('Should have font color rgba(0, 0, 0, 0.54)', () => {
+          it('Should have font color rgba(0, 0, 0, 0.54)', async () => {
+            await element.updateComplete;
+
             const androidTitleFontColor = slotElementStyles.getPropertyValue('color');
 
             // convert rgba alpha(last value) into 2 decimal only to work with safari(safari has 6 decimal places so test fails wrongly)
@@ -94,7 +125,9 @@
             expect(androidTitleFontColorTwoDecimalAlpha).to.equal('rgba(0, 0, 0, 0.54)');
           });
 
-          it('Should have margin margin-top of 32px and margin-bottom of 16px;', () => {
+          it('Should have margin margin-top of 32px and margin-bottom of 16px;', async () => {
+            await element.updateComplete;
+
             const androidTitleMarginTop = slotElementStyles.getPropertyValue('margin-top');
             const androidTitleMarginBottom = slotElementStyles.getPropertyValue('margin-bottom');
             
@@ -103,13 +136,17 @@
             expect(androidTitleMarginBottom).to.equal('16px');
           });
 
-          it('Should have line-height of 16px', () => {
+          it('Should have line-height of 16px', async () => {
+            await element.updateComplete;
+
             const androidTitleLineHeight = slotElementStyles.getPropertyValue('line-height');
 
             expect(androidTitleLineHeight).to.equal('16px');
           });
 
-          it('Should have font-weight of 500', () => {
+          it('Should have font-weight of 500', async () => {
+            await element.updateComplete;
+
             const androidTitleFontWeight = slotElementStyles.getPropertyValue('font-weight');
 
             expect(androidTitleFontWeight).to.equal('500');

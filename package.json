@@ -13,8 +13,7 @@
   "main": "morph-list-view-title.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0",
-    "@moduware/morph-element": "^1.0.0",
+    "@polymer/lit-element": "^0.6.2",
     "@moduware/morph-shared-styles": "^1.0.0"
   },
   "devDependencies": {
