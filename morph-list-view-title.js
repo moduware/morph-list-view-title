@@ -1,6 +1,3 @@
-// import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-// import { MorphElement } from '@moduware/morph-element/morph-element.js';
-
 import { LitElement, html } from '@polymer/lit-element';
 import '@moduware/morph-shared-styles/morph-shared-styles.js';
 import { getPlatform } from './src/morph-element.js';
@@ -56,9 +53,12 @@ export class MorphListViewTitle extends LitElement {
     };
   }
 
+  /**
+   * LitElement lifecycle called once just before first updated() is called
+   */
   firstUpdated() {
     super.firstUpdated();
-
+    // check first if platform attribute is set in HTML before auto detecting and assigning platform using getPlatform()
     if (!this.hasAttribute('platform')) {
       this.platform = getPlatform();
     }
