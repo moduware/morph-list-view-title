@@ -1,7 +1,7 @@
 {
   "description": "Title component for Morph List View that changes its look based on when it is either IOS device or Android device.",
   "name": "@moduware/morph-list-view-title",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/moduware/morph-list-view-title"
