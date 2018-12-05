@@ -1,6 +1,6 @@
 import { LitElement, html } from '@polymer/lit-element';
+import { getPlatform } from '@moduware/lit-utils';
 import '@moduware/morph-shared-styles/morph-shared-styles.js';
-import { getPlatform } from './src/morph-element.js';
 /**
  * `morph-list-view-title`
  * 
