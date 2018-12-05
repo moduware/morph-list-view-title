@@ -17,6 +17,14 @@
     "@moduware/morph-shared-styles": "^1.0.0",
     "@moduware/lit-utils": "^1.0.0"
   },
+  "keywords": [
+    "lit",
+    "moduware",
+    "web",
+    "components",
+    "lit-element",
+    "lit-html"
+  ],
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
     "wct-browser-legacy": "^1.0.1",

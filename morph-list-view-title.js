@@ -40,7 +40,7 @@ export class MorphListViewTitle extends LitElement {
     </style>
 
     <slot></slot>
-`;
+    `;
   }
 
   static get is() { return 'morph-list-view-title'; }
