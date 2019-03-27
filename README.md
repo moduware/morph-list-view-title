@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/PolymerElements/paper-progress)
 
-Title component for list view
+A title web component using LitElement as base class for list view element.
 
 `morph-list-view-title` changes its look based on when it is either IOS device or Android device.
 

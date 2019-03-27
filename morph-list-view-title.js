@@ -1,6 +1,6 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { getPlatform } from '@moduware/lit-utils';
-import '@moduware/morph-shared-styles/morph-shared-styles.js';
+
 /**
  * `morph-list-view-title`
  * 
@@ -11,35 +11,41 @@ import '@moduware/morph-shared-styles/morph-shared-styles.js';
  * @demo demo/index.html
  */
 export class MorphListViewTitle extends LitElement {
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          position: relative;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-size: 14px;
+        }
+      
+        :host([platform="ios"]) {
+          text-transform: uppercase;
+          color: #6d6d72;
+          margin: 35px 15px 10px;
+          line-height: 17px;
+          font-family: -apple-system, 'SF UI Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+      
+        :host([platform="android"]) {
+          color: rgba(0,0,0,.54);
+          margin: 32px 16px 16px;
+          line-height: 16px;
+          font-weight: 500;
+          font-family: Roboto, Noto, Helvetica, Arial, sans-serif;
+        }
+      `
+    ];
+  }
+
+
   render() {
     return html`
-    <style include="morph-shared-styles">
-      :host {
-        display: block;
-        position: relative;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        font-size: 14px;
-      }
-
-      :host([platform="ios"]) {
-        text-transform: uppercase;
-        color: #6d6d72;
-        margin: 35px 15px 10px;
-        line-height: 17px;
-      }
-
-      :host([platform="android"]) {
-        color: rgba(0,0,0,.54);
-        margin: 32px 16px 16px;
-        line-height: 16px;
-        font-weight: 500;
-      }
-
-    </style>
-
-    <slot></slot>
+      <slot></slot>
     `;
   }
 

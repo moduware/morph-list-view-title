@@ -8,13 +8,12 @@
   },
   "scripts": {
     "start": "polymer serve --npm --module-resolution=node",
-    "test": "polymer test --npm --module-resolution=node"
+    "test": "wct"
   },
   "main": "morph-list-view-title.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/lit-element": "^0.6.2",
-    "@moduware/morph-shared-styles": "^1.0.0",
+    "lit-element": "^2.0.1",
     "@moduware/lit-utils": "^1.0.0"
   },
   "keywords": [
